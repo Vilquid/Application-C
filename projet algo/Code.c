@@ -173,8 +173,31 @@ void jeu_sept_erreurs()
 
 	int timer; // timer = la valeur à laquelle le timer s'est arreté
 
-	if (timer < 30)
+	if (timer < 20)
 	{
-		// 
+		// on attribue une note de 5/5
 	}
+
+	else if (20 < timer < 30)
+	{
+		// on attribue une note de 4/5
+	}
+
+	else if (30 < timer < 40)
+	{
+		// on attribue une note de 3/5
+	}
+
+	else if (40 < timer < 50)
+	{
+		// on attribue une note de 2/5
+	}
+
+	else
+	{
+		// on attribue une note de 1/5
+	}
+
+	// on retourne la note
+
 }
