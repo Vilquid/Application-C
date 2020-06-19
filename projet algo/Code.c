@@ -149,3 +149,32 @@ void AllInOne(selecteur){
 
 
 
+void jeu_sept_erreurs()
+{
+	// on affiche les 2 images
+
+	int erreurs = 0;
+
+	//début du timer
+
+	while (erreurs != 7)
+	{
+		if (/* condition */) // si clic correspond a l'erreur --> partie Sam ?
+		{
+			erreurs++;
+
+			// on affiche un cercle rouge de 3 de large et de 10 de diametre aux endroits du clic
+		}
+	}
+
+	// arret du timer
+
+	// partie "résultat" :
+
+	int timer; // timer = la valeur à laquelle le timer s'est arreté
+
+	if (timer < 30)
+	{
+		// 
+	}
+}
