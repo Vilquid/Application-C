@@ -53,7 +53,10 @@ void gestionEvenement(EvenementGfx evenement){
 
 			switch (caractereClavier()){
 				
-				case 'Q': /* Pour sortir quelque peu proprement du programme */
+				case 'Q':
+					libereDonneesImageRGB(&image);
+					termineBoucleEvenements();
+					break; /* Pour sortir quelque peu proprement du programme */
 				case 'q':
 					libereDonneesImageRGB(&image); /* On libere la structure image,
 					c'est plus propre, meme si on va sortir du programme juste apres */
@@ -165,6 +168,11 @@ void jeu_sept_erreurs()
 
 			// on affiche un cercle rouge de 3 de large et de 10 de diametre aux endroits du clic
 		}
+
+		/*
+		il faudrait faire un test du genre:
+		si timer > 120 --> arret du timer + on sort de la boucle pour attribuer une note de 1/5
+		*/
 	}
 
 	// arret du timer
@@ -196,8 +204,57 @@ void jeu_sept_erreurs()
 	else
 	{
 		// on attribue une note de 1/5
+		// on arrete le timer
 	}
 
 	// on retourne la note
 
+}
+
+void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
+{
+	int x_alea = rand() % 800;
+	int y_alea = rand(100) % 600;
+	int temps_alea = rand() % 20;
+
+	sleep(temps_alea);
+
+	// faire apparaitre un carré rouge de 20 de coté grace à x_alea et y_alea
+
+	// début du timer
+
+	while () // tant qu'il n'y a pas de clic et 
+	//que les coordonnées de la souris n'appartiennet pas au carré, ne rien faire
+	{
+		sleep(0.01);
+	}
+
+	// fin timer
+
+	// double timer = temps du timer;
+
+	if (timer < 0.2)
+	{
+		// on attribue une note de 5/5
+	}
+
+	if (0.2 <= timer < 0.4)
+	{
+		// on attribue une note de 4/5
+	}
+
+	if (0.4 <= timer < 0.6)
+	{
+		// on attribue une note de 3/5
+	}
+
+	if (0.8 <= timer < 1.0)
+	{
+		// on attribue une note de 2/5
+	}
+
+	else
+	{
+		// on attribue une note de 1/5
+	}
 }
