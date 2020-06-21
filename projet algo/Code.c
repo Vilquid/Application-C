@@ -151,27 +151,42 @@ void AllInOne(selecteur){
 }
 
 
-
 void jeu_sept_erreurs()
 {
 	// on affiche les 2 images
 
 	int erreurs = 0;
 
+	int abscisses_des_erreurs[7] = {;;;;;;} // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
+	int ordonnees_des_erreurs[7] = {;;;;;;}
+
 	//début du timer
 
 	while (erreurs != 7)
 	{
-		if (/* condition */) // si clic correspond a l'erreur --> partie Sam ?
+		for (int i = 0; i < 7; i++)
 		{
-			erreurs++;
+			for (int j = 0; j < 7; j++)
+			{
+				if (abscisses_des_erreurs[i] - 10 <= abscisseSouris() <= abscisses_des_erreurs[i] + 10 && ordonnees_des_erreurs - 10 <= ordonneeSouris() <= ordonnees_des_erreurs - 10 && /*clic*/) // si clic correspond a l'erreur
+				{
+					erreurs++;
 
-			// on affiche un cercle rouge de 3 de large et de 10 de diametre aux endroits du clic
+					couleurCourante(255, 0, 0);
+					epaisseurTrait(2);
+					afficheCercle(abscisses_des_erreurs[i], ordonnees_des_erreurs[j], 5);
+				}
+			}
 		}
 
 		/*
 		il faudrait faire un test du genre:
 		si timer > 120 --> arret du timer + on sort de la boucle pour attribuer une note de 1/5
+		
+		if ()
+		{
+			/
+		}
 		*/
 	}
 
@@ -211,27 +226,30 @@ void jeu_sept_erreurs()
 
 }
 
-void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
+void jeu_reflexe() // COORDONNEES A DETERMINER jeu où l'on doit cliquer le plus rapidement dans une case
 {
-	int x_alea = rand() % 800;
+	int x_alea = rand(20) % 780;
 	int y_alea = rand(100) % 600;
 	int temps_alea = rand() % 20;
 
 	sleep(temps_alea);
 
-	// faire apparaitre un carré rouge de 20 de coté grace à x_alea et y_alea
+	// affiche aléatoire du carré
+	couleurCourante(255, 0, 0);
+	rectangle(x_alea, y_alea, x_alea + 20, y_alea + 20);
+
+	// zone cliquable
 
 	// début du timer
 
-	while () // tant qu'il n'y a pas de clic et 
+	while (x_alea <= abscisseSouris() <= x_alea + 20 && y_alea <= ordonneeSouris() <= y_alea + 20 && ) // tant qu'il n'y a pas de clic et 
 	//que les coordonnées de la souris n'appartiennet pas au carré, ne rien faire
 	{
 		sleep(0.01);
 	}
-
-	// fin timer
-
 	// double timer = temps du timer;
+	
+	// fin timer
 
 	if (timer < 0.2)
 	{
@@ -257,4 +275,7 @@ void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
 	{
 		// on attribue une note de 1/5
 	}
+
+	// on retourne la note
+
 }
