@@ -150,15 +150,45 @@ void AllInOne(selecteur){
 	
 }
 
-
+/*
 void jeu_sept_erreurs()
 {
-	// on affiche les 2 images
+	// choix de l'image
+	int nombre_alea = rand() % 100;
 
+	if (nombre_alea <= 25) // image 1
+	{
+		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
+		int ordonnees_des_erreurs[7] = {;;;;;;};
+
+		// on affiche l'image
+	}
+
+	if (25 < nombre_alea <= 50) // image 2
+	{
+		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
+		int ordonnees_des_erreurs[7] = {;;;;;;};
+
+		// on affiche l'image
+	}
+
+	else if (50 < nombre_alea <= 75) // image 3
+	{
+		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
+		int ordonnees_des_erreurs[7] = {;;;;;;};
+
+		// on affiche l'image
+	}
+
+	else // image 4
+	{
+		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
+		int ordonnees_des_erreurs[7] = {;;;;;;};
+
+		// on affiche l'image
+	}
+	
 	int erreurs = 0;
-
-	int abscisses_des_erreurs[7] = {;;;;;;} // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
-	int ordonnees_des_erreurs[7] = {;;;;;;}
 
 	//début du timer
 
@@ -168,7 +198,7 @@ void jeu_sept_erreurs()
 		{
 			for (int j = 0; j < 7; j++)
 			{
-				if (abscisses_des_erreurs[i] - 10 <= abscisseSouris() <= abscisses_des_erreurs[i] + 10 && ordonnees_des_erreurs - 10 <= ordonneeSouris() <= ordonnees_des_erreurs - 10 && /*clic*/) // si clic correspond a l'erreur
+				if (abscisses_des_erreurs[i] - 10 <= abscisseSouris() <= abscisses_des_erreurs[i] + 10 && ordonnees_des_erreurs - 10 <= ordonneeSouris() <= ordonnees_des_erreurs - 10 && etatBoutonSouris() == GaucheAppuye) // si clic correspond a l'erreur
 				{
 					erreurs++;
 
@@ -187,7 +217,7 @@ void jeu_sept_erreurs()
 		{
 			/
 		}
-		*/
+		
 	}
 
 	// arret du timer
@@ -226,7 +256,7 @@ void jeu_sept_erreurs()
 
 }
 
-void jeu_reflexe() // COORDONNEES A DETERMINER jeu où l'on doit cliquer le plus rapidement dans une case
+void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
 {
 	int x_alea = rand(20) % 780;
 	int y_alea = rand(100) % 600;
@@ -238,12 +268,10 @@ void jeu_reflexe() // COORDONNEES A DETERMINER jeu où l'on doit cliquer le plus
 	couleurCourante(255, 0, 0);
 	rectangle(x_alea, y_alea, x_alea + 20, y_alea + 20);
 
-	// zone cliquable
-
 	// début du timer
 
-	while (x_alea <= abscisseSouris() <= x_alea + 20 && y_alea <= ordonneeSouris() <= y_alea + 20 && ) // tant qu'il n'y a pas de clic et 
-	//que les coordonnées de la souris n'appartiennet pas au carré, ne rien faire
+	while (x_alea <= abscisseSouris() <= x_alea + 20 && y_alea <= ordonneeSouris() <= y_alea + 20 && etatBoutonSouris() == GaucheAppuye)
+	// tant qu'il n'y a pas de clic et que les coordonnées de la souris n'appartiennet pas au carré, ne rien faire
 	{
 		sleep(0.01);
 	}
@@ -278,4 +306,4 @@ void jeu_reflexe() // COORDONNEES A DETERMINER jeu où l'on doit cliquer le plus
 
 	// on retourne la note
 
-}
+}*/
