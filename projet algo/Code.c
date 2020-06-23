@@ -150,7 +150,6 @@ void AllInOne(selecteur){
 	
 }
 
-/*
 void jeu_sept_erreurs()
 {
 	// choix de l'image
@@ -215,9 +214,9 @@ void jeu_sept_erreurs()
 		
 		if ()
 		{
-			/
+			
 		}
-		
+		*/
 	}
 
 	// arret du timer
@@ -251,9 +250,6 @@ void jeu_sept_erreurs()
 		// on attribue une note de 1/5
 		// on arrete le timer
 	}
-
-	// on retourne la note
-
 }
 
 void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
@@ -265,8 +261,8 @@ void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
 	sleep(temps_alea);
 
 	// affiche aléatoire du carré
-	couleurCourante(255, 0, 0);
-	rectangle(x_alea, y_alea, x_alea + 20, y_alea + 20);
+	couleurCourante(255, 51, 0);
+	afficheRectangle(x_alea, y_alea, x_alea + 20, y_alea + 20);
 
 	// début du timer
 
@@ -275,6 +271,7 @@ void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
 	{
 		sleep(0.01);
 	}
+
 	// double timer = temps du timer;
 	
 	// fin timer
@@ -303,7 +300,24 @@ void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
 	{
 		// on attribue une note de 1/5
 	}
+}
 
-	// on retourne la note
+void regles()
+{
+	couleurCourante(200, 200, 200);
+	afficheRectangle(0, 0, 30, 10);
 
-}*/
+	couleurCourante(0, 0, 0);
+	afficheChaine("Règles", 5, 0, 2);
+
+	if (0 <= abscisseSouris() <= 30 && 0 <= ordonneeSouris() <= 10 && etatBoutonSouris() == GaucheAppuye)
+	{
+		effacefenetre();
+
+		// template :
+		couleurCourante(200, 200, 200);
+		afficheRectangle(); // rectangle de fond -> remplir les coordonnées
+		couleurCourante(0, 0, 0);
+		afficheChaine("", , , );
+	}
+}
