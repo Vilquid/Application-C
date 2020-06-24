@@ -4,22 +4,79 @@
 #define PtDonneesImageRGB DonneesImageRGB*
 
 void gestionEvenement(EvenementGfx evenement);
-
-/* Image modifiée */
-void cree3matrices(int matR[][256], int matV[][256],int matB[][256], DonneesImageRGB* dataRGB);
-void creeImage(int matR[][256], int matV[][256],int matB[][256], DonneesImageRGB* dataRGB);
-
 /* fonction du clic bouton */
 int onClic();
-
 /*fonction affichage*/
 void affichage();
-
 //fenetre 
 int largeurFenetrePrincipal = 1280;
 int hauteurFenetrePrincipal = 800;
 //scene
 int scene=0;
+
+//jeu de couleur
+int i=0;
+int juste=0;
+int iteration=0;
+int erreur=0;
+int fauxbuffer=0;
+char rep[11]="salutation";
+int millisecondesEntreAppels=5000;
+void jeucouleur();
+char pk[0];
+
+
+void jeucouleur(){
+	//Zone fonction avec aléat sur couleur courante 
+	//demandeTemporisation(5000);
+
+		if (fauxbuffer==0){
+			fauxbuffer=1;
+			printf("Appuez sur r puis entrée pour démarrer :");
+			scanf("%c",pk);
+		 }
+		
+		else if (fauxbuffer!=0){
+			//printf("i a l'entrée : %d \n",i);
+			if(i==0){
+				scanf("%s",rep);
+		
+				if((strcmp(rep,"bleu"))==0){
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+				}
+			else if(i==1){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"jaune"))==0){
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			else if(i==2){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"blanc"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+
+			
+		}
+		printf("\nbonne reponses=%d\n", juste);
+		printf("erreurs=%d\n", erreur);
+
+	}
+
+
+/* Image modifiée */
+void cree3matrices(int matR[][256], int matV[][256],int matB[][256], DonneesImageRGB* dataRGB);
+void creeImage(int matR[][256], int matV[][256],int matB[][256], DonneesImageRGB* dataRGB);
 //matrices
 int matR[256][256];
 int matV[256][256];
@@ -31,7 +88,7 @@ DonneesImageRGB *dataRGB = NULL;
 
 int main(int argc, char **argv)
 {
-	
+	srand(time(NULL));
 	initialiseGfx(argc, argv);
 	
 	prepareFenetreGraphique("GfxLib", LargeurFenetre, HauteurFenetre);
@@ -47,9 +104,11 @@ void gestionEvenement(EvenementGfx evenement){
 	
 	switch ( evenement){
 		case Initialisation:
-			image = lisBMPRGB("bmp/flying.bmp");
+			rafraichisFenetre();
+			demandeTemporisation(20);
+			/*image = lisBMPRGB("bmp/flying.bmp");
 			dataRGB = lisBMPRGB("bmp/flying.bmp");
-			cree3matrices(matR, matV, matB, dataRGB);
+			cree3matrices(matR, matV, matB, dataRGB);*/
 		break;
 		
 		
@@ -73,6 +132,7 @@ void gestionEvenement(EvenementGfx evenement){
 
 		case BoutonSouris:
 			if (etatBoutonSouris() == GaucheAppuye){
+				printf("Bouton gauche appuye en : (%d, %d)\n", abscisseSouris(), ordonneeSouris());
 				onClic();
 				rafraichisFenetre();
 			}
@@ -163,14 +223,38 @@ void creeImage(int matR[][256], int matV[][256],int matB[][256], DonneesImageRGB
 int onClic(){
 	//selection de langue
 	if (scene==0){
-		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*8/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/5 && ordonneeSouris() <= hauteurFenetrePrincipal*3/5){
+		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*8/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
 			scene=1;
 			return 0;
 		}
-		else if (abscisseSouris() >= largeurFenetrePrincipal*12/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/5 && ordonneeSouris() <= hauteurFenetrePrincipal*3/5){
+		else if (abscisseSouris() >= largeurFenetrePrincipal*12/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
 			scene=2;
 			return 0;
 		}
+	}
+	//bouton retour/quitter
+	if (abscisseSouris() >= largeurFenetrePrincipal*17/20 && abscisseSouris() <= largeurFenetrePrincipal && ordonneeSouris() >= 0 && ordonneeSouris() <= hauteurFenetrePrincipal*2/20){
+		if (scene==0){
+			termineBoucleEvenements();
+		}
+		else if (scene==3 || scene==4){
+			scene=scene-2;
+			return 0;
+		}
+		else if (scene==5 || scene==7 || scene==9){
+			scene=3;
+			return 0;
+		}
+		else if (scene==6 || scene==8 || scene==10){
+			scene=4;
+			return 0;
+		}
+		else if (scene==1 || scene==2){
+			scene=0;
+			return 0;
+		}
+		
+		return 0;
 	}
 	//acceuil
 	if (scene==1){
@@ -183,30 +267,44 @@ int onClic(){
 	}
 	//selection d'apptitude
 	if (scene==3){
-		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*6/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/5 && ordonneeSouris() <= hauteurFenetrePrincipal*3/5){
+		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*6/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
 			scene=5;
 			return 0;
 		}
-		if (abscisseSouris() >= largeurFenetrePrincipal*8/20 && abscisseSouris() <= largeurFenetrePrincipal*12/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/5 && ordonneeSouris() <= hauteurFenetrePrincipal*3/5){
+		if (abscisseSouris() >= largeurFenetrePrincipal*8/20 && abscisseSouris() <= largeurFenetrePrincipal*12/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
 			scene=7;
 			return 0;
 		}
-		if (abscisseSouris() >= largeurFenetrePrincipal*14/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/5 && ordonneeSouris() <= hauteurFenetrePrincipal*3/5){
+		if (abscisseSouris() >= largeurFenetrePrincipal*14/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
 			scene=9;
 			return 0;
 		}
 	}
 	if (scene==4){
-		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*6/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/5 && ordonneeSouris() <= hauteurFenetrePrincipal*3/5){
+		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*6/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
 			scene=6;
 			return 0;
 		}
-		if (abscisseSouris() >= largeurFenetrePrincipal*8/20 && abscisseSouris() <= largeurFenetrePrincipal*12/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/5 && ordonneeSouris() <= hauteurFenetrePrincipal*3/5){
+		if (abscisseSouris() >= largeurFenetrePrincipal*8/20 && abscisseSouris() <= largeurFenetrePrincipal*12/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
 			scene=8;
 			return 0;
 		}
-		if (abscisseSouris() >= largeurFenetrePrincipal*14/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/5 && ordonneeSouris() <= hauteurFenetrePrincipal*3/5){
+		if (abscisseSouris() >= largeurFenetrePrincipal*14/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
 			scene=10;
+			return 0;
+		}
+	}
+	if (scene==9){
+		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*6/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=23;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*8/20 && abscisseSouris() <= largeurFenetrePrincipal*12/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=25;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*14/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=27;
 			return 0;
 		}
 	}
@@ -214,7 +312,54 @@ int onClic(){
 	return 0;
 }
 
+/*sommaire scènes:
+ * scène 0=selection de langue
+ * scène 1=entrée prénom fr
+ * scène 2=entrée prénom en
+ * scène 3=choix apptitude fr
+ * scène 4=choix apptitude en
+ * 
+ * scène 5=mémoire fr
+ * scène 6=mémoire en
+ * scène 7=synchro fr
+ * scène 8=synchro en
+ * scène 9=vitesse analyse fr
+ * scène 10=vitesse analyse en
+ * 
+ * scène 11=jeu 1 mémoire fr
+ * scène 12=jeu 1 mémoire en
+ * scène 13=jeu 2 mémoire fr
+ * scène 14=jeu 2 mémoire en
+ * scène 15=résultats mémoire fr
+ * scène 16=résultats mémoire en
+ * scène 17=jeu 1 synchro fr
+ * scène 18=jeu 1 synchro en
+ * scène 19=jeu 2 synchro fr
+ * scène 20=jeu 2 synchro en
+ * scène 21=résultats synchro fr
+ * scène 22=résultats synchro en
+ * scène 23=jeu de couleur vitesse analyse fr
+ * scène 24=jeu de couleur vitesse analyse en
+ * scène 25=jeu 2 vitesse analyse fr
+ * scène 26=jeu 2 vitesse analyse en
+ * scène 27=résultats vitesse analyse fr
+ * scène 28=résultats vitesse analyse en
+ * 
+ * 
+*/
+
+
 void affichage(){
+	//bouton retour/quitter
+	couleurCourante(200,200,200);
+	rectangle(largeurFenetrePrincipal*17/20, 0, largeurFenetrePrincipal, hauteurFenetrePrincipal*2/20);
+	
+	if (scene!=0){
+		couleurCourante(0,0,0);
+		epaisseurDeTrait(4);
+		afficheChaine("Retour", 30, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal/25);
+	}
+	//-------------------------------------------------------------------------------------selections-------------------------------------------------------------------------------------//
 	if (scene==0){//selection de langue
 		couleurCourante(200,200,200);
 		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*8/20, hauteurFenetrePrincipal*3/6);
@@ -226,6 +371,7 @@ void affichage(){
 		afficheChaine("Select your language", 30, largeurFenetrePrincipal/3, hauteurFenetrePrincipal*3/4+16);
 		afficheChaine("Francais", 30, largeurFenetrePrincipal*4/20, hauteurFenetrePrincipal*5/12);
 		afficheChaine("Anglais", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
+		afficheChaine("Quitter", 30, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal/25);
 	}
 	if (scene==1){//entrée prénom fr
 		couleurCourante(200,200,200);
@@ -267,6 +413,127 @@ void affichage(){
 		afficheChaine("Synchronization", 30, largeurFenetrePrincipal*17/40, hauteurFenetrePrincipal*5/12);
 		afficheChaine("Analysis speed", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
 	}
+	
+	//-------------------------------------------------------------------------------------Menu par catégorie-------------------------------------------------------------------------------------//
+	if (scene==5){//mémoire fr
+		couleurCourante(200,200,200);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*4/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*5/6);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*6/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*8/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*12/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*3/6);
+		couleurCourante(0,0,0);
+		epaisseurDeTrait(4);
+		afficheChaine("Selectionnez un test", 30, largeurFenetrePrincipal/3, hauteurFenetrePrincipal*3/4);
+		afficheChaine("Memory", 30, largeurFenetrePrincipal*3/20, hauteurFenetrePrincipal*5/12);
+		afficheChaine("Simon", 30, largeurFenetrePrincipal*17/40, hauteurFenetrePrincipal*5/12);
+		afficheChaine("Resultats", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
+	}
+	if (scene==6){//mémoire en
+		couleurCourante(200,200,200);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*4/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*5/6);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*6/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*8/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*12/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*3/6);
+		couleurCourante(0,0,0);
+		epaisseurDeTrait(4);
+		afficheChaine("Select a test", 30, largeurFenetrePrincipal/3, hauteurFenetrePrincipal*3/4);
+		afficheChaine("concentration", 30, largeurFenetrePrincipal*3/20, hauteurFenetrePrincipal*5/12);
+		afficheChaine("Simon", 30, largeurFenetrePrincipal*17/40, hauteurFenetrePrincipal*5/12);
+		afficheChaine("Results", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
+	}
+	if (scene==7){//synchro fr
+		couleurCourante(200,200,200);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*4/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*5/6);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*6/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*8/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*12/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*3/6);
+		couleurCourante(0,0,0);
+		epaisseurDeTrait(4);
+		afficheChaine("Selectionnez un test", 30, largeurFenetrePrincipal/3, hauteurFenetrePrincipal*3/4);
+		afficheChaine("jeu1", 30, largeurFenetrePrincipal*3/20, hauteurFenetrePrincipal*5/12);
+		afficheChaine("jeu2", 30, largeurFenetrePrincipal*17/40, hauteurFenetrePrincipal*5/12);
+		afficheChaine("Resultats", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
+	}
+	if (scene==8){//synchro en
+		couleurCourante(200,200,200);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*4/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*5/6);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*6/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*8/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*12/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*3/6);
+		couleurCourante(0,0,0);
+		epaisseurDeTrait(4);
+		afficheChaine("Select a test", 30, largeurFenetrePrincipal/3, hauteurFenetrePrincipal*3/4);
+		afficheChaine("game1", 30, largeurFenetrePrincipal*3/20, hauteurFenetrePrincipal*5/12);
+		afficheChaine("game2", 30, largeurFenetrePrincipal*17/40, hauteurFenetrePrincipal*5/12);
+		afficheChaine("Results", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
+	}
+	if (scene==9){//vitesse analyse fr
+		couleurCourante(200,200,200);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*4/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*5/6);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*6/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*8/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*12/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*3/6);
+		couleurCourante(0,0,0);
+		epaisseurDeTrait(4);
+		afficheChaine("Selectionnez un test", 30, largeurFenetrePrincipal/3, hauteurFenetrePrincipal*3/4);
+		afficheChaine("jeu1", 30, largeurFenetrePrincipal*3/20, hauteurFenetrePrincipal*5/12);
+		afficheChaine("jeu2", 30, largeurFenetrePrincipal*17/40, hauteurFenetrePrincipal*5/12);
+		afficheChaine("Resultats", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
+	}
+	if (scene==10){//vitesse analyse en
+		couleurCourante(200,200,200);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*4/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*5/6);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*6/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*8/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*12/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*3/6);
+		couleurCourante(0,0,0);
+		epaisseurDeTrait(4);
+		afficheChaine("Select a test", 30, largeurFenetrePrincipal/3, hauteurFenetrePrincipal*3/4);
+		afficheChaine("game1", 30, largeurFenetrePrincipal*3/20, hauteurFenetrePrincipal*5/12);
+		afficheChaine("game2", 30, largeurFenetrePrincipal*17/40, hauteurFenetrePrincipal*5/12);
+		afficheChaine("Results", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
+	}
+	//-------------------------------------------------------------------------------------scènes jeux-------------------------------------------------------------------------------------//
+	if (scene==23){
+			jeucouleur();// fonctionne parce que j'ai mit un buffer !!!! donc un qui part dans le vide
+			scene=24; 
+		}
+	if (scene==24){//jeu de couleur
+			
+			effaceFenetre(255,255,255);
+			//printf("doit valoir 0 : %d \n\n",i);
+
+
+			i=(rand()%3);
+			printf("après affichage %d\n",i);
+			
+
+			couleurCourante(255,0,0);
+			rectangle(400,250,880,550);
+			
+			if(i==0){
+				couleurCourante(0,0,255);
+				epaisseurDeTrait(6);
+				afficheChaine("GRIS",60,580,380);
+				}
+			if(i==1){
+				couleurCourante(255,255,0);
+				epaisseurDeTrait(6);
+				afficheChaine("ROUGE",60,540,380);
+				}
+			if(i==2){
+				couleurCourante(255,255,255);
+				epaisseurDeTrait(6);
+				afficheChaine("BLEU",60,580,380);
+				}
+			scene=23;
+		}		
 
 }
+
+
+
+
+
+//-------------------------------------------------------------------------------------jeux-------------------------------------------------------------------------------------//
 
