@@ -38,146 +38,7 @@ char pk[0];
 
 void jeuAlphabet();
 
-void jeuAlphabet(){
-	
-	if(fauxbuffer3==0){
-		fauxbuffer3=1;
-		printf("Appuez sur r puis entrée pour démarrer :");
-		scanf("%c",pk);
-		scene=31;
-		}
-		
-	else if(fauxbuffer3!=0){
-		if(iteration2<10){
-			printf("%c : ",possibilite[i2]);
-			
-			scanf("%s",rep2);
-			reptemp[0]=possibilite[i2-1];
-			reptemp[1]=possibilite[i2+1];
-			
-			
-			if((strcmp(rep2,reptemp))==0){
-				printf("Bien vu ! \n");
-				juste2=juste2+1;
-			}
-			
-			else{
-				erreur2=erreur2+1;
-				}
-			scene=31;
-		}
-		else{
-			printf("Vous avez %d bonnes reponses : ",juste2);
-		}
 
-	}
-}
-
-void jeucouleur(){
-	//Zone fonction avec aléat sur couleur courante 
-
-		if (fauxbuffer==0){
-			fauxbuffer=1;
-			printf("Appuez sur r puis entrée pour démarrer :");
-			scanf("%c",pk);
-		 }
-		
-		else if (fauxbuffer!=0){
-			
-			if(i==0){
-				scanf("%s",rep);
-		
-				if((strcmp(rep,"bleu"))==0){
-					juste=juste+1;
-					iteration=iteration+1;
-					}
-				else{erreur=erreur+1;}
-				}
-			else if(i==1){
-				scanf("%s",rep);
-
-				if((strcmp(rep,"jaune"))==0){
-					juste=juste+1;
-					iteration=iteration+1;
-					}
-				else{erreur=erreur+1;}
-			}
-			else if(i==2){
-				scanf("%s",rep);
-
-				if((strcmp(rep,"blanc"))==0){ 
-					juste=juste+1;
-					iteration=iteration+1;
-					}
-				else{erreur=erreur+1;}
-			}
-			
-			else if(i==3){
-				scanf("%s",rep);
-
-				if((strcmp(rep,"gris"))==0){ 
-					juste=juste+1;
-					iteration=iteration+1;
-					}
-				else{erreur=erreur+1;}
-			}
-			
-			else if(i==4){
-				scanf("%s",rep);
-
-				if((strcmp(rep,"orange"))==0){ 
-					juste=juste+1;
-					iteration=iteration+1;
-					}
-				else{erreur=erreur+1;}
-			}
-			
-			else if(i==5){
-				scanf("%s",rep);
-
-				if((strcmp(rep,"rose"))==0){ 
-					juste=juste+1;
-					iteration=iteration+1;
-					}
-				else{erreur=erreur+1;}
-			}
-			
-			else if(i==6){
-				scanf("%s",rep);
-
-				if((strcmp(rep,"violet"))==0){ 
-					juste=juste+1;
-					iteration=iteration+1;
-					}
-				else{erreur=erreur+1;}
-			}
-			
-			else if(i==7){
-				scanf("%s",rep);
-
-				if((strcmp(rep,"vert"))==0){ 
-					juste=juste+1;
-					iteration=iteration+1;
-					}
-				else{erreur=erreur+1;}
-			}
-			
-			else if(i==8){
-				scanf("%s",rep);
-
-				if((strcmp(rep,"blanc"))==0){ 
-					juste=juste+1;
-					iteration=iteration+1;
-					}
-				else{erreur=erreur+1;}
-			}
-
-			
-		}
-		printf("\nbonne reponses=%d\n", juste);
-		printf("erreurs=%d\n", erreur);
-
-	}
 
 
 /* Image modifiée */
@@ -414,6 +275,15 @@ int onClic(){
 			return 0;
 		}
 	}
+	if (abscisseSouris() >= 0 && abscisseSouris() <= largeurFenetrePrincipal*3/20 && ordonneeSouris() >= 0 && ordonneeSouris() <= hauteurFenetrePrincipal*2/20){
+		if (scene==5 || scene==7 || scene==9){
+			scene=29;
+			return 0;
+		}
+		else if (scene==6 || scene==8 || scene==10){
+			scene=30;
+			return 0;
+		}
 	
 	return 0;
 }
@@ -444,14 +314,14 @@ int onClic(){
  * scène 20=jeu 2 synchro en
  * scène 21=résultats synchro fr
  * scène 22=résultats synchro en
- * scène 23=jeu de couleur vitesse analyse fr
+ * scène 23&230=jeu de couleur vitesse analyse fr
  * scène 24=jeu de couleur vitesse analyse en
- * scène 25=jeu 2 vitesse analyse fr
+ * scène 25&250=jeu 2 vitesse analyse fr
  * scène 26=jeu 2 vitesse analyse en
  * scène 27=résultats vitesse analyse fr
  * scène 28=résultats vitesse analyse en
- * 
- * 
+ * scene 29=règles fr
+ * scène 30=règles en
 */
 
 
@@ -599,12 +469,33 @@ void affichage(){
 		afficheChaine("game2", 30, largeurFenetrePrincipal*17/40, hauteurFenetrePrincipal*5/12);
 		afficheChaine("Results", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
 	}
+	//----------------------------------------------------------------------------------------règles---------------------------------------------------------------------------------------//
+	
+	if (scene==5||scene==7||scene==9){
+		couleurCourante(200,200,200);
+		rectangle(0, 0, largeurFenetrePrincipal*3/20, hauteurFenetrePrincipal*2/20);
+		couleurCourante(0,0,0);
+		epaisseurDeTrait(4);
+		afficheChaine("Regles", 30, largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal/25);
+	}
+	if (scene==6||scene==8||scene==10){
+		couleurCourante(200,200,200);
+		rectangle(0, 0, largeurFenetrePrincipal*3/20, hauteurFenetrePrincipal*2/20);
+		couleurCourante(0,0,0);
+		epaisseurDeTrait(4);
+		afficheChaine("Rules", 30, largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal/25);
+	}
+	if (scene==29){
+	}
+	if (scene==30){
+	}
+	
 	//-------------------------------------------------------------------------------------scènes jeux-------------------------------------------------------------------------------------//
 	if (scene==23){
 			jeucouleur();// fonctionne parce que j'ai mit un buffer !!!! donc un qui part dans le vide
-			scene=30; 
+			scene=230; 
 		}
-	if (scene==30){//jeu de couleur
+	if (scene==230){//jeu de couleur
 			
 			effaceFenetre(255,255,255);
 
@@ -675,7 +566,7 @@ void affichage(){
 		jeuAlphabet();
 		}
 	
-	if(scene==31){
+	if(scene==250){
 			i2=(rand()%25);
 
 			switch(i2){
@@ -847,4 +738,143 @@ void affichage(){
 
 
 //-------------------------------------------------------------------------------------jeux-------------------------------------------------------------------------------------//
+void jeuAlphabet(){
+	
+	if(fauxbuffer3==0){
+		fauxbuffer3=1;
+		printf("Appuez sur r puis entrée pour démarrer :");
+		scanf("%c",pk);
+		scene=31;
+		}
+		
+	else if(fauxbuffer3!=0){
+		if(iteration2<10){
+			printf("%c : ",possibilite[i2]);
+			
+			scanf("%s",rep2);
+			reptemp[0]=possibilite[i2-1];
+			reptemp[1]=possibilite[i2+1];
+			
+			
+			if((strcmp(rep2,reptemp))==0){
+				printf("Bien vu ! \n");
+				juste2=juste2+1;
+			}
+			
+			else{
+				erreur2=erreur2+1;
+				}
+			scene=250;
+		}
+		else{
+			printf("Vous avez %d bonnes reponses : ",juste2);
+		}
 
+	}
+}
+
+void jeucouleur(){
+	//Zone fonction avec aléat sur couleur courante 
+
+		if (fauxbuffer==0){
+			fauxbuffer=1;
+			printf("Appuez sur r puis entrée pour démarrer :");
+			scanf("%c",pk);
+		 }
+		
+		else if (fauxbuffer!=0){
+			
+			if(i==0){
+				scanf("%s",rep);
+		
+				if((strcmp(rep,"bleu"))==0){
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+				}
+			else if(i==1){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"jaune"))==0){
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			else if(i==2){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"blanc"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==3){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"gris"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==4){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"orange"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==5){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"rose"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==6){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"violet"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==7){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"vert"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==8){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"blanc"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+
+			
+		}
+		printf("\nbonne reponses=%d\n", juste);
+		printf("erreurs=%d\n", erreur);
+
+	}
