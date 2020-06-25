@@ -202,8 +202,8 @@ void jeu_sept_erreurs()
 					erreurs++;
 
 					couleurCourante(255, 0, 0);
-					epaisseurTrait(2);
-					afficheCercle(abscisses_des_erreurs[i], ordonnees_des_erreurs[j], 5);
+					epaisseurDeTrait(2);
+					cercle(abscisses_des_erreurs[i], ordonnees_des_erreurs[j], 5);
 				}
 			}
 		}
@@ -262,7 +262,7 @@ void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
 
 	// affiche aléatoire du carré
 	couleurCourante(255, 51, 0);
-	afficheRectangle(x_alea, y_alea, x_alea + 20, y_alea + 20);
+	rectangle(x_alea, y_alea, x_alea + 20, y_alea + 20);
 
 	// début du timer
 
@@ -305,7 +305,7 @@ void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
 void regles()
 {
 	couleurCourante(200, 200, 200);
-	afficheRectangle(0, 0, 30, 10);
+	rectangle(0, 0, 30, 10);
 
 	couleurCourante(0, 0, 0);
 	afficheChaine("Règles", 5, 0, 2);
@@ -314,10 +314,43 @@ void regles()
 	{
 		effacefenetre();
 
-		// template :
+		epaisseurDeTrait(4);
+
 		couleurCourante(200, 200, 200);
-		afficheRectangle(); // rectangle de fond -> remplir les coordonnées
+		rectangle(5, HauteurFenetre - 105, LargeurFenetre - 5, HauteurFenetre - 5);
 		couleurCourante(0, 0, 0);
-		afficheChaine("", , , );
+		afficheChaine("Test des réflexes", 20, 10, HauteurFenetre - 30); // taille ploice, a
+		afficheChaine("Principe du jeu : il faut, le plus rapidement possible, cliquer dans le carré rouge qui apparait à l'écran.", 20, 10, HauteurFenetre - 80);
+
+
+		couleurCourante(200, 200, 200);
+		rectangle(5, HauteurFenetre - 210, LargeurFenetre - 5, HauteurFenetre - 110);
+		couleurCourante(0, 0, 0);
+		afficheChaine("Test des 7 différences", 20, 10, HauteurFenetre - 135);
+		afficheChaine("Principe du jeu : ", 20, 10, HauteurFenetre - 185);
+
+		couleurCourante(200, 200, 200);
+		rectangle(5, HauteurFenetre - 325, LargeurFenetre - 5, HauteurFenetre - 225);
+		couleurCourante(0, 0, 0);
+		afficheChaine("Test du Simon", 20, 10, HauteurFenetre - 250);
+		afficheChaine("Principe du jeu : une séquence de couleurs vous est montrée, à vous de la reproduire en cliquant sur des outons colorés.", 20, 10, HauteurFenetre - 300);
+
+		couleurCourante(200, 200, 200);
+		rectangle(5, HauteurFenetre - 430, LargeurFenetre - 5, HauteurFenetre - 330);
+		couleurCourante(0, 0, 0);
+		afficheChaine("Test Memory", 20, 10, HauteurFenetre - 355);
+		afficheChaine("Principe du jeu : Cliquez sur 2 images retournées afin de rassembler les paires, attention aux mauvaises associations", 20, 10, HauteurFenetre - 405);
+
+		couleurCourante(200, 200, 200);
+		rectangle(5, HauteurFenetre - 535, LargeurFenetre - 5, HauteurFenetre - 435);
+		couleurCourante(0, 0, 0);
+		afficheChaine("Test des couleurs", 20, 10, HauteurFenetre - 460);
+		afficheChaine("Principe du jeu : Détermiez le plus rapidement possible la couleur dans laquelle le mot est écrit.", 20, 10, HauteurFenetre - 510);
+
+		couleurCourante(200, 200, 200);
+		rectangle(5, HauteurFenetre - 640, LargeurFenetre - 5, HauteurFenetre - 540);
+		couleurCourante(0, 0, 0);
+		afficheChaine("Test de l'alphabet", 20, 10, HauteurFenetre - 565);
+		afficheChaine("Principe du jeu : une lettre s'affiche à l'écran et vous devez appuyer sur la lettre qui la précède puis celle qui la suit dans l'alphabet.", 20, 10, HauteurFenetre - 615);
 	}
 }
