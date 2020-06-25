@@ -8,6 +8,13 @@ void gestionEvenement(EvenementGfx evenement);
 int onClic();
 /*fonction affichage*/
 void affichage();
+/*timer*/
+void debutChrono();
+void finChrono();
+/*jeux*/
+void jeucouleur();
+void jeuAlphabet();
+void jeu_sept_erreurs();
 //fenetre 
 int largeurFenetrePrincipal = 1280;
 int hauteurFenetrePrincipal = 800;
@@ -33,13 +40,10 @@ char possibilite[26]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o
 char rep2[2];
 char reptemp[2];
 int millisecondesEntreAppels=5000;
-void jeucouleur();
 char pk[0];
-
-void jeuAlphabet();
-
-
-
+int note1=0,note2=0,note3=0,note4=0,note5=0,note6=0;
+time_t temps1, temps2;
+int temps;
 
 /* Image modifiée */
 void cree3matrices(int matR[][256], int matV[][256],int matB[][256], DonneesImageRGB* dataRGB);
@@ -308,7 +312,7 @@ int onClic(){
  * scène 14=jeu 2 mémoire en
  * scène 15=résultats mémoire fr
  * scène 16=résultats mémoire en
- * scène 17=jeu 1 synchro fr
+ * scène 17&170=jeu 1 synchro fr
  * scène 18=jeu 1 synchro en
  * scène 19=jeu 2 synchro fr
  * scène 20=jeu 2 synchro en
@@ -316,7 +320,7 @@ int onClic(){
  * scène 22=résultats synchro en
  * scène 23&230=jeu de couleur vitesse analyse fr
  * scène 24=jeu de couleur vitesse analyse en
- * scène 25&250=jeu 2 vitesse analyse fr
+ * scène 25=jeu 2 vitesse analyse fr
  * scène 26=jeu 2 vitesse analyse en
  * scène 27=résultats vitesse analyse fr
  * scène 28=résultats vitesse analyse en
@@ -510,63 +514,63 @@ void affichage(){
 				couleurCourante(0,0,255);
 				epaisseurDeTrait(6);
 				afficheChaine("GRIS",60,580,380);
-				}
+			}
 				
 			if(i==1){
 				couleurCourante(255,255,0);
 				epaisseurDeTrait(6);
 				afficheChaine("ROUGE",60,540,380);
-				}
+			}
 				
 			if(i==2){
 				couleurCourante(255,255,255);
 				epaisseurDeTrait(6);
 				afficheChaine("BLEU",60,580,380);
-				}
+			}
 				
 			if(i==3){
 				couleurCourante(96,96,96);
 				epaisseurDeTrait(6);
 				afficheChaine("MARRON",60,580,380);
-				}
+			}
 				
 			if(i==4){
 				couleurCourante(237,127,16);
 				epaisseurDeTrait(6);
 				afficheChaine("NOIR",60,540,380);
-				}
+			}
 				
 			if(i==5){
 				couleurCourante(253,108,158);
 				epaisseurDeTrait(6);
 				afficheChaine("BLEU",60,580,380);
-				}
+			}
 				
 			if(i==6){
 				couleurCourante(102,0,153);
 				epaisseurDeTrait(6);
 				afficheChaine("ROSE",60,580,380);
-				}
+			}
 				
 			if(i==7){
 				couleurCourante(0,255,0);
 				epaisseurDeTrait(6);
 				afficheChaine("VIOLET",60,540,380);
-				}
+			}
 				
 			if(i==8){
 				couleurCourante(255,255,255);
 				epaisseurDeTrait(6);
 				afficheChaine("BLANC",60,580,380);
-				}
+			}
 						
 			scene=23;
-		}		
-	if (scene==25){
-		jeuAlphabet();
 		}
+	if (scene==17){
+		jeuAlphabet();
+	}
 	
-	if(scene==250){
+	if(scene==170){
 			i2=(rand()%25);
 
 			switch(i2){
@@ -727,12 +731,15 @@ void affichage(){
 					epaisseurDeTrait(6);
 					afficheChaine("Z",60,580,380);
 				break;
-						
 			}
 			iteration2=iteration2+1;
-			scene=25;
-			}
+			scene=17;
 	}
+	if (scene==25){
+		jeu_sept_erreurs();
+	}
+}
+	
 
 
 
@@ -744,7 +751,7 @@ void jeuAlphabet(){
 		fauxbuffer3=1;
 		printf("Appuez sur r puis entrée pour démarrer :");
 		scanf("%c",pk);
-		scene=31;
+		scene=17;
 		}
 		
 	else if(fauxbuffer3!=0){
@@ -764,7 +771,7 @@ void jeuAlphabet(){
 			else{
 				erreur2=erreur2+1;
 				}
-			scene=250;
+			scene=170;
 		}
 		else{
 			printf("Vous avez %d bonnes reponses : ",juste2);
@@ -876,5 +883,107 @@ void jeucouleur(){
 		}
 		printf("\nbonne reponses=%d\n", juste);
 		printf("erreurs=%d\n", erreur);
+}
 
+void jeu_sept_erreurs()
+{
+	// choix de l'image
+	int nombre_alea = rand() % 100;
+
+	if (nombre_alea <= 25) // image 1
+	{
+		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
+		int ordonnees_des_erreurs[7] = {;;;;;;};
+
+		// on affiche l'image
 	}
+
+	if (25 < nombre_alea <= 50) // image 2
+	{
+		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
+		int ordonnees_des_erreurs[7] = {;;;;;;};
+
+		// on affiche l'image
+	}
+
+	else if (50 < nombre_alea <= 75) // image 3
+	{
+		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
+		int ordonnees_des_erreurs[7] = {;;;;;;};
+
+		// on affiche l'image
+	}
+
+	else // image 4
+	{
+		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
+		int ordonnees_des_erreurs[7] = {;;;;;;};
+
+		// on affiche l'image
+	}
+	
+	int erreurs = 0;
+
+	//début du timer
+	débutChrono();
+
+	while (erreurs != 7)
+	{
+		for (int i = 0; i < 7; i++)
+		{
+			if (abscisses_des_erreurs[i] - 10 <= abscisseSouris() <= abscisses_des_erreurs[i] + 10 && ordonnees_des_erreurs - 10 <= ordonneeSouris() <= ordonnees_des_erreurs - 10 && etatBoutonSouris() == GaucheAppuye) // si clic correspond a l'erreur
+			{
+				erreurs++;
+				couleurCourante(255, 0, 0);
+				epaisseurDeTrait(2);
+				cercle(abscisses_des_erreurs[i], ordonnees_des_erreurs[j], 5);
+			}
+			
+		}
+		finChrono();
+		temps=120-(temps2-temps1);
+		if (temps==0){
+			erreurs=7; //c'est pas le cas mais comme ça on sort du truc sans avoir une autre variable
+		}
+	}
+
+	// arret du timer
+	finChrono();
+	// partie "résultat" :
+
+	int timer=temps2-temps1; // timer = la valeur à laquelle le timer s'est arreté
+
+	if (timer < 24)
+	{
+		note6=5;
+	}
+
+	else if (24 <= timer < 48)
+	{
+		note6=4;
+	}
+
+	else if (48 <= timer < 72)
+	{
+		note6=3
+	}
+
+	else if (72 <= timer < 96)
+	{
+		note6=2
+	}
+
+	else
+	{
+		note6=1
+	}
+	scene=9;
+}
+	
+	void debutChrono(){
+		temps1=time(NULL);
+	}
+	void finChrono(){
+		temps2=time(NULL);
+	}
+	
