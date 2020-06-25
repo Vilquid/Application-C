@@ -154,6 +154,7 @@ void AllInOne(selecteur){
 // PROTOYYPES
 int jeu_sept_erreurs();
 int jeu_reflexe();
+void regles();
 
 int jeu_sept_erreurs()
 {
@@ -165,7 +166,12 @@ int jeu_sept_erreurs()
 		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
 		int ordonnees_des_erreurs[7] = {;;;;;;};
 
-		// on affiche l'image
+		image = lisRGB("erreurs_1.jpg"); // chemins à redéterminer
+
+		if (image != NULL) // Si l'image a pu etre lue
+		{
+			ecrisImage((largeurFenetre()-image->largeurImage)/2, (hauteurFenetre()-image->hauteurImage)/2, image->largeurImage, image->hauteurImage, image->donneesRGB);
+		}
 	}
 
 	if (25 < nombre_alea <= 50) // image 2
@@ -173,7 +179,12 @@ int jeu_sept_erreurs()
 		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
 		int ordonnees_des_erreurs[7] = {;;;;;;};
 
-		// on affiche l'image
+		image = lisRGB("erreurs_2.jpg"); // chemins à redéterminer
+		
+		if (image != NULL) // Si l'image a pu etre lue
+		{
+			ecrisImage((largeurFenetre()-image->largeurImage)/2, (hauteurFenetre()-image->hauteurImage)/2, image->largeurImage, image->hauteurImage, image->donneesRGB);
+		}
 	}
 
 	else if (50 < nombre_alea <= 75) // image 3
@@ -181,7 +192,12 @@ int jeu_sept_erreurs()
 		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
 		int ordonnees_des_erreurs[7] = {;;;;;;};
 
-		// on affiche l'image
+		image = lisRGB("erreurs_3.jpg"); // chemins à redéterminer
+		
+		if (image != NULL) // Si l'image a pu etre lue
+		{
+			ecrisImage((largeurFenetre()-image->largeurImage)/2, (hauteurFenetre()-image->hauteurImage)/2, image->largeurImage, image->hauteurImage, image->donneesRGB);
+		}
 	}
 
 	else // image 4
@@ -189,7 +205,12 @@ int jeu_sept_erreurs()
 		int abscisses_des_erreurs[7] = {;;;;;;}; // x puis y IL FAUT D2TERMINER LES COORDONNEES DES ERREURS
 		int ordonnees_des_erreurs[7] = {;;;;;;};
 
-		// on affiche l'image
+		image = lisRGB("erreurs_4.jpg"); // chemins à redéterminer
+		
+		if (image != NULL) // Si l'image a pu etre lue
+		{
+			ecrisImage((largeurFenetre()-image->largeurImage)/2, (hauteurFenetre()-image->hauteurImage)/2, image->largeurImage, image->hauteurImage, image->donneesRGB);
+		}
 	}
 	
 	int erreurs = 0;
