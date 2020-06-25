@@ -265,6 +265,62 @@ int onClic(){
 			return 0;
 		}
 	}
+	if (scene==5){
+		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*6/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=11;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*8/20 && abscisseSouris() <= largeurFenetrePrincipal*12/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=13;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*14/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=15;
+			return 0;
+		}
+	}
+	if (scene==6){
+		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*6/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=12;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*8/20 && abscisseSouris() <= largeurFenetrePrincipal*12/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=14;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*14/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=16;
+			return 0;
+		}
+	}
+	if (scene==7){
+		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*6/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=17;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*8/20 && abscisseSouris() <= largeurFenetrePrincipal*12/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=19;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*14/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=15;
+			return 0;
+		}
+	}
+	if (scene==8){
+		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*6/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=18;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*8/20 && abscisseSouris() <= largeurFenetrePrincipal*12/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=20;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*14/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=16;
+			return 0;
+		}
+	}
 	if (scene==9){
 		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*6/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
 			scene=23;
@@ -275,7 +331,21 @@ int onClic(){
 			return 0;
 		}
 		if (abscisseSouris() >= largeurFenetrePrincipal*14/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
-			scene=27;
+			scene=15;
+			return 0;
+		}
+	}
+	if (scene==10){
+		if (abscisseSouris() >= largeurFenetrePrincipal*2/20 && abscisseSouris() <= largeurFenetrePrincipal*6/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=24;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*8/20 && abscisseSouris() <= largeurFenetrePrincipal*12/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=26;
+			return 0;
+		}
+		if (abscisseSouris() >= largeurFenetrePrincipal*14/20 && abscisseSouris() <= largeurFenetrePrincipal*18/20 && ordonneeSouris() >= hauteurFenetrePrincipal*2/6 && ordonneeSouris() <= hauteurFenetrePrincipal*3/6){
+			scene=16;
 			return 0;
 		}
 	}
@@ -294,7 +364,8 @@ int onClic(){
 
 /*sommaire scènes:
  * scène 0=selection de langue
- * scène 1=entrée prénom fr
+ * scène 110= choix login/register fr
+ * scène 1&111=entrée prénom fr
  * scène 2=entrée prénom en
  * scène 3=choix apptitude fr
  * scène 4=choix apptitude en
@@ -310,20 +381,18 @@ int onClic(){
  * scène 12=jeu 1 mémoire en
  * scène 13=jeu 2 mémoire fr
  * scène 14=jeu 2 mémoire en
- * scène 15=résultats mémoire fr
- * scène 16=résultats mémoire en
+ * scène 15=résultats fr
+ * scène 16=résultats en
  * scène 17&170=jeu 1 synchro fr
  * scène 18=jeu 1 synchro en
  * scène 19=jeu 2 synchro fr
  * scène 20=jeu 2 synchro en
- * scène 21=résultats synchro fr
- * scène 22=résultats synchro en
+
  * scène 23&230=jeu de couleur vitesse analyse fr
  * scène 24=jeu de couleur vitesse analyse en
  * scène 25=jeu 2 vitesse analyse fr
  * scène 26=jeu 2 vitesse analyse en
- * scène 27=résultats vitesse analyse fr
- * scène 28=résultats vitesse analyse en
+
  * scene 29=règles fr
  * scène 30=règles en
 */
@@ -351,6 +420,18 @@ void affichage(){
 		afficheChaine("Select your language", 30, largeurFenetrePrincipal/3, hauteurFenetrePrincipal*3/4+16);
 		afficheChaine("Francais", 30, largeurFenetrePrincipal*4/20, hauteurFenetrePrincipal*5/12);
 		afficheChaine("Anglais", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
+		afficheChaine("Quitter", 30, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal/25);
+	}
+	if (scene==110){//login
+		couleurCourante(200,200,200);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*8/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*12/20, hauteurFenetrePrincipal*2/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*3/6);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*4/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*5/6);
+		couleurCourante(0,0,0);
+		epaisseurDeTrait(4);
+		afficheChaine("Voulez vous vous inscrire ou vous connecter?", 30, largeurFenetrePrincipal/3, hauteurFenetrePrincipal*3/4-16);
+		afficheChaine("Inscription", 30, largeurFenetrePrincipal*4/20, hauteurFenetrePrincipal*5/12);
+		afficheChaine("connection", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
 		afficheChaine("Quitter", 30, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal/25);
 	}
 	if (scene==1){//entrée prénom fr
@@ -472,6 +553,14 @@ void affichage(){
 		afficheChaine("game1", 30, largeurFenetrePrincipal*3/20, hauteurFenetrePrincipal*5/12);
 		afficheChaine("game2", 30, largeurFenetrePrincipal*17/40, hauteurFenetrePrincipal*5/12);
 		afficheChaine("Results", 30, largeurFenetrePrincipal*14/20, hauteurFenetrePrincipal*5/12);
+	}
+	//-------------------------------------------------------------------------------------resultats---------------------------------------------------------------------------------------//
+	if (scene==15){//résultats fr
+		couleurCourante(200,200,200);
+		rectangle(largeurFenetrePrincipal*2/20, hauteurFenetrePrincipal*4/6, largeurFenetrePrincipal*18/20, hauteurFenetrePrincipal*5/6);
+		couleurCourante(0,0,0);
+		epaisseurDeTrait(4);
+		afficheChaine("Resultats", 30, largeurFenetrePrincipal/3, hauteurFenetrePrincipal*3/4);
 	}
 	//----------------------------------------------------------------------------------------règles---------------------------------------------------------------------------------------//
 	
