@@ -150,7 +150,12 @@ void AllInOne(selecteur){
 	
 }
 
-void jeu_sept_erreurs()
+
+// PROTOYYPES
+int jeu_sept_erreurs();
+int jeu_reflexe();
+
+int jeu_sept_erreurs()
 {
 	// choix de l'image
 	int nombre_alea = rand() % 100;
@@ -188,75 +193,69 @@ void jeu_sept_erreurs()
 	}
 	
 	int erreurs = 0;
+	int clic = 0;
+	int note = 0;
+	int timer; // timer = la valeur à laquelle le timer s'est arreté
 
 	//début du timer
 
-	while (erreurs != 7)
+	while (erreurs != 7 || clic > 10)
 	{
 		for (int i = 0; i < 7; i++)
 		{
 			for (int j = 0; j < 7; j++)
 			{
-				if (abscisses_des_erreurs[i] - 10 <= abscisseSouris() <= abscisses_des_erreurs[i] + 10 && ordonnees_des_erreurs - 10 <= ordonneeSouris() <= ordonnees_des_erreurs - 10 && etatBoutonSouris() == GaucheAppuye) // si clic correspond a l'erreur
+				if (abscisses_des_erreurs[i] - 10 <= abscisseSouris() && abscisseSouris() <= abscisses_des_erreurs[i] + 10 && ordonnees_des_erreurs[j] - 10 <= ordonneeSouris() && ordonneeSouris() <= ordonnees_des_erreurs[j] - 10 && etatBoutonSouris() == GaucheAppuye) // si clic correspond a l'erreur
 				{
 					erreurs++;
+					clic++;
 
 					couleurCourante(255, 0, 0);
 					epaisseurDeTrait(2);
-					cercle(abscisses_des_erreurs[i], ordonnees_des_erreurs[j], 5);
+					cercle(abscisses_des_erreurs[i], ordonnees_des_erreurs[j], 15);
 				}
 			}
 		}
-
-		/*
-		il faudrait faire un test du genre:
-		si timer > 120 --> arret du timer + on sort de la boucle pour attribuer une note de 1/5
-		
-		if ()
-		{
-			
-		}
-		*/
 	}
 
 	// arret du timer
 
 	// partie "résultat" :
 
-	int timer; // timer = la valeur à laquelle le timer s'est arreté
-
 	if (timer < 20)
 	{
-		// on attribue une note de 5/5
+		note = 5;
 	}
 
 	else if (20 < timer < 30)
 	{
-		// on attribue une note de 4/5
+		note = 4;
 	}
 
 	else if (30 < timer < 40)
 	{
-		// on attribue une note de 3/5
+		note = 3;
 	}
 
 	else if (40 < timer < 50)
 	{
-		// on attribue une note de 2/5
+		note = 2;
 	}
 
 	else
 	{
-		// on attribue une note de 1/5
-		// on arrete le timer
+		note = 1;
 	}
+
+	return note;
 }
 
-void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
+int jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
 {
 	int x_alea = rand(20) % 780;
 	int y_alea = rand(100) % 600;
 	int temps_alea = rand() % 20;
+	int note = 0;
 
 	sleep(temps_alea);
 
@@ -266,7 +265,7 @@ void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
 
 	// début du timer
 
-	while (x_alea <= abscisseSouris() <= x_alea + 20 && y_alea <= ordonneeSouris() <= y_alea + 20 && etatBoutonSouris() == GaucheAppuye)
+	while (x_alea <= abscisseSouris() && abscisseSouris() <= x_alea + 20 && y_alea <= ordonneeSouris() && ordonneeSouris() <= y_alea + 20 && etatBoutonSouris() == GaucheAppuye)
 	// tant qu'il n'y a pas de clic et que les coordonnées de la souris n'appartiennet pas au carré, ne rien faire
 	{
 		sleep(0.01);
@@ -278,28 +277,30 @@ void jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
 
 	if (timer < 0.2)
 	{
-		// on attribue une note de 5/5
+		note = 5;
 	}
 
 	if (0.2 <= timer < 0.4)
 	{
-		// on attribue une note de 4/5
+		note = 4;
 	}
 
 	if (0.4 <= timer < 0.6)
 	{
-		// on attribue une note de 3/5
+		note = 3;
 	}
 
 	if (0.8 <= timer < 1.0)
 	{
-		// on attribue une note de 2/5
+		note = 2;
 	}
 
 	else
 	{
-		// on attribue une note de 1/5
+		note = 1;
 	}
+
+	return note;
 }
 
 void regles()
@@ -310,7 +311,7 @@ void regles()
 	couleurCourante(0, 0, 0);
 	afficheChaine("Règles", 5, 0, 2);
 
-	if (0 <= abscisseSouris() <= 30 && 0 <= ordonneeSouris() <= 10 && etatBoutonSouris() == GaucheAppuye)
+	if (0 <= abscisseSouris() && abscisseSouris() <= 30 && 0 <= ordonneeSouris() && ordonneeSouris() <= 10 && etatBoutonSouris() == GaucheAppuye)
 	{
 		effacefenetre();
 
