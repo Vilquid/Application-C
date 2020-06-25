@@ -16,19 +16,65 @@ int scene=0;
 
 //jeu de couleur
 int i=0;
+int i2=0;
+int i3=0;
+int i4=0;
+int i5=0;
 int juste=0;
+int juste2=0;
+int erreur2=0;
 int iteration=0;
+int iteration2=0;
 int erreur=0;
 int fauxbuffer=0;
+int fauxbuffer3=0;
 char rep[11]="salutation";
+char possibilite[26]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+char rep2[2];
+char reptemp[2];
 int millisecondesEntreAppels=5000;
 void jeucouleur();
 char pk[0];
 
+void jeuAlphabet();
+
+void jeuAlphabet(){
+	
+	if(fauxbuffer3==0){
+		fauxbuffer3=1;
+		printf("Appuez sur r puis entrée pour démarrer :");
+		scanf("%c",pk);
+		scene=31;
+		}
+		
+	else if(fauxbuffer3!=0){
+		if(iteration2<10){
+			printf("%c : ",possibilite[i2]);
+			
+			scanf("%s",rep2);
+			reptemp[0]=possibilite[i2-1];
+			reptemp[1]=possibilite[i2+1];
+			
+			
+			if((strcmp(rep2,reptemp))==0){
+				printf("Bien vu ! \n");
+				juste2=juste2+1;
+			}
+			
+			else{
+				erreur2=erreur2+1;
+				}
+			scene=31;
+		}
+		else{
+			printf("Vous avez %d bonnes reponses : ",juste2);
+		}
+
+	}
+}
 
 void jeucouleur(){
 	//Zone fonction avec aléat sur couleur courante 
-	//demandeTemporisation(5000);
 
 		if (fauxbuffer==0){
 			fauxbuffer=1;
@@ -37,7 +83,7 @@ void jeucouleur(){
 		 }
 		
 		else if (fauxbuffer!=0){
-			//printf("i a l'entrée : %d \n",i);
+			
 			if(i==0){
 				scanf("%s",rep);
 		
@@ -57,6 +103,66 @@ void jeucouleur(){
 				else{erreur=erreur+1;}
 			}
 			else if(i==2){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"blanc"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==3){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"gris"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==4){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"orange"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==5){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"rose"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==6){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"violet"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==7){
+				scanf("%s",rep);
+
+				if((strcmp(rep,"vert"))==0){ 
+					juste=juste+1;
+					iteration=iteration+1;
+					}
+				else{erreur=erreur+1;}
+			}
+			
+			else if(i==8){
 				scanf("%s",rep);
 
 				if((strcmp(rep,"blanc"))==0){ 
@@ -496,19 +602,17 @@ void affichage(){
 	//-------------------------------------------------------------------------------------scènes jeux-------------------------------------------------------------------------------------//
 	if (scene==23){
 			jeucouleur();// fonctionne parce que j'ai mit un buffer !!!! donc un qui part dans le vide
-			scene=24; 
+			scene=30; 
 		}
-	if (scene==24){//jeu de couleur
+	if (scene==30){//jeu de couleur
 			
 			effaceFenetre(255,255,255);
-			//printf("doit valoir 0 : %d \n\n",i);
 
-
-			i=(rand()%3);
-			printf("après affichage %d\n",i);
-			
-
-			couleurCourante(255,0,0);
+			i3=(rand()%255);
+			i4=(rand()%255);
+			i5=(rand()%255);
+			i=(rand()%8);
+			couleurCourante(i3,i4,i5);
 			rectangle(400,250,880,550);
 			
 			if(i==0){
@@ -516,21 +620,228 @@ void affichage(){
 				epaisseurDeTrait(6);
 				afficheChaine("GRIS",60,580,380);
 				}
+				
 			if(i==1){
 				couleurCourante(255,255,0);
 				epaisseurDeTrait(6);
 				afficheChaine("ROUGE",60,540,380);
 				}
+				
 			if(i==2){
 				couleurCourante(255,255,255);
 				epaisseurDeTrait(6);
 				afficheChaine("BLEU",60,580,380);
 				}
+				
+			if(i==3){
+				couleurCourante(96,96,96);
+				epaisseurDeTrait(6);
+				afficheChaine("MARRON",60,580,380);
+				}
+				
+			if(i==4){
+				couleurCourante(237,127,16);
+				epaisseurDeTrait(6);
+				afficheChaine("NOIR",60,540,380);
+				}
+				
+			if(i==5){
+				couleurCourante(253,108,158);
+				epaisseurDeTrait(6);
+				afficheChaine("BLEU",60,580,380);
+				}
+				
+			if(i==6){
+				couleurCourante(102,0,153);
+				epaisseurDeTrait(6);
+				afficheChaine("ROSE",60,580,380);
+				}
+				
+			if(i==7){
+				couleurCourante(0,255,0);
+				epaisseurDeTrait(6);
+				afficheChaine("VIOLET",60,540,380);
+				}
+				
+			if(i==8){
+				couleurCourante(255,255,255);
+				epaisseurDeTrait(6);
+				afficheChaine("BLANC",60,580,380);
+				}
+						
 			scene=23;
 		}		
+	if (scene==25){
+		jeuAlphabet();
+		}
+	
+	if(scene==31){
+			i2=(rand()%25);
 
-}
-
+			switch(i2){
+				
+				case 0:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("A",60,580,380);
+				break;
+				
+				case 1:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("B",60,580,380);
+				break;
+				
+				case 2:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("C",60,580,380);
+				break;
+				
+				case 3:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("D",60,580,380);
+				break;
+				
+				case 4:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("E",60,580,380);
+				break;
+				
+				case 5:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("F",60,580,380);
+				break;
+				
+				case 6:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("G",60,580,380);
+				break;
+				
+				case 7:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("H",60,580,380);
+				break;
+				
+				case 8:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("I",60,580,380);
+				break;
+				
+				case 9:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("J",60,580,380);
+				break;
+				
+				case 10:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("K",60,580,380);
+				break;
+				
+				case 11:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("L",60,580,380);
+				break;
+				
+				case 12:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("M",60,580,380);
+				break;
+				
+				case 13:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("N",60,580,380);
+				break;
+				
+				case 14:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("O",60,580,380);
+				break;
+				
+				
+				case 15:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("P",60,580,380);
+				break;
+				
+				case 16:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("Q",60,580,380);
+				break;
+				
+				case 17:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("R",60,580,380);
+				break;
+				
+				case 18:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("S",60,580,380);
+				break;
+				
+				case 19:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("T",60,580,380);
+				break;
+				
+				case 20:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("U",60,580,380);
+				break;
+				
+				case 21:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("V",60,580,380);
+				break;
+				
+				case 22:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("W",60,580,380);
+				break;
+				
+				case 23:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("X",60,580,380);
+				break;
+				
+				case 24:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("Y",60,580,380);
+				break;
+				
+				case 25:
+					couleurCourante(255,0,0);
+					epaisseurDeTrait(6);
+					afficheChaine("Z",60,580,380);
+				break;
+						
+			}
+			iteration2=iteration2+1;
+			scene=25;
+			}
+	}
 
 
 
