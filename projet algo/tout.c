@@ -840,7 +840,7 @@ void affichage(){
 
 //-------------------------------------------------------------------------------------jeux-------------------------------------------------------------------------------------//
 void jeuAlphabet(){
-	
+if(iteration2<10){
 	if(fauxbuffer3==0){
 		fauxbuffer3=1;
 		printf("Appuez sur r puis entrée pour démarrer :");
@@ -870,13 +870,15 @@ void jeuAlphabet(){
 		else{
 			printf("Vous avez %d bonnes reponses : ",juste2);
 		}
-
+		iteration2=iteration2+;
+		}
+	else{scene=3;}
 	}
 }
 
 void jeucouleur(){
 	//Zone fonction avec aléat sur couleur courante 
-
+	if(iteration<10){
 		if (fauxbuffer==0){
 			fauxbuffer=1;
 			printf("Appuez sur r puis entrée pour démarrer :");
@@ -977,6 +979,10 @@ void jeucouleur(){
 		}
 		printf("\nbonne reponses=%d\n", juste);
 		printf("erreurs=%d\n", erreur);
+		iteration=iteration+1;
+	}
+	else{
+		scene=3;
 }
 
 void jeu_sept_erreurs()
