@@ -5,8 +5,8 @@
 #include "../GFX_lib/BmpLib.h" // Cet include permet de manipuler des fichiers BMP
 #include "../GFX_lib/ESLib.h" // Pour utiliser valeurAleatoire()
 
-#define LargeurFenetre 800
-#define HauteurFenetre 600
+#define LargeurFenetre 1200
+#define HauteurFenetre 800
 
 void gestionEvenement(EvenementGfx evenement);
 void afficheBouton1();
