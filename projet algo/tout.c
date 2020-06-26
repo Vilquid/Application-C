@@ -981,8 +981,7 @@ void jeucouleur(){
 		printf("erreurs=%d\n", erreur);
 		iteration=iteration+1;
 	}
-	else{
-		scene=3;
+	else{scene=3;}
 }
 
 void jeu_sept_erreurs()
