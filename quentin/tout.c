@@ -561,7 +561,7 @@ void affichage(){
 		epaisseurDeTrait(4);
 		afficheChaine("Voulez vous vous inscrire ou vous connecter?", 30, LargeurFenetre/3, HauteurFenetre*3/4-16);
 		afficheChaine("Inscription", 30, LargeurFenetre*4/20, HauteurFenetre*5/12);
-		afficheChaine("connection", 30, LargeurFenetre*14/20, HauteurFenetre*5/12);
+		afficheChaine("Connexion", 30, LargeurFenetre*14/20, HauteurFenetre*5/12);
 		afficheChaine("Quitter", 30, LargeurFenetre*18/20, HauteurFenetre/25);
 	}
 	if (scene==1){//entrée prénom fr
@@ -590,6 +590,7 @@ void affichage(){
 		afficheChaine("Memoire", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("Synchronisation", 30, LargeurFenetre*17/40-20, HauteurFenetre*5/12);
 		afficheChaine("Vitesse d'analyse", 30, LargeurFenetre*14/20, HauteurFenetre*5/12);
+		regles();
 	}
 	if (scene==4){//choix apptitude en
 		couleurCourante(200,200,200);
@@ -603,6 +604,8 @@ void affichage(){
 		afficheChaine("Memory", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("Synchronization", 30, LargeurFenetre*17/40, HauteurFenetre*5/12);
 		afficheChaine("Analysis speed", 30, LargeurFenetre*14/20, HauteurFenetre*5/12);
+		regles();
+		afficheChaine("Rules", 30, LargeurFenetre*2/20, HauteurFenetre/25);
 	}
 	
 	//-------------------------------------------------------------------------------------Menu par catégorie-------------------------------------------------------------------------------------//
@@ -617,7 +620,7 @@ void affichage(){
 		afficheChaine("Selectionnez un test", 30, LargeurFenetre/3, HauteurFenetre*3/4);
 		afficheChaine("Memory", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("Simon", 30, LargeurFenetre*17/40, HauteurFenetre*5/12);
-		afficheChaine("Resultats", 30, LargeurFenetre*14/20, HauteurFenetre*5/12);
+		afficheChaine("Resultats", 30, LargeurFenetre*14/20 + 20, HauteurFenetre*5/12);
 	}
 	if (scene==6){//mémoire en
 		couleurCourante(200,200,200);
@@ -628,9 +631,11 @@ void affichage(){
 		couleurCourante(0,0,0);
 		epaisseurDeTrait(4);
 		afficheChaine("Select a test", 30, LargeurFenetre/3, HauteurFenetre*3/4);
-		afficheChaine("concentration", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
+		afficheChaine("Concentration", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("Simon", 30, LargeurFenetre*17/40, HauteurFenetre*5/12);
 		afficheChaine("Results", 30, LargeurFenetre*14/20, HauteurFenetre*5/12);
+		regles();
+		afficheChaine("Rules", 30, LargeurFenetre*2/20, HauteurFenetre/25);
 	}
 	if (scene==7){//synchro fr
 		couleurCourante(200,200,200);
@@ -643,7 +648,8 @@ void affichage(){
 		afficheChaine("Selectionnez un test", 30, LargeurFenetre/3, HauteurFenetre*3/4);
 		afficheChaine("jeu1", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("jeu2", 30, LargeurFenetre*17/40, HauteurFenetre*5/12);
-		afficheChaine("Resultats", 30, LargeurFenetre*14/20, HauteurFenetre*5/12);
+		afficheChaine("Resultats", 30, LargeurFenetre*14/20 + 20, HauteurFenetre*5/12);
+		regles();
 	}
 	if (scene==8){//synchro en
 		couleurCourante(200,200,200);
@@ -657,6 +663,7 @@ void affichage(){
 		afficheChaine("game1", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("game2", 30, LargeurFenetre*17/40, HauteurFenetre*5/12);
 		afficheChaine("Results", 30, LargeurFenetre*14/20, HauteurFenetre*5/12);
+		regles();
 	}
 	if (scene==9){//vitesse analyse fr
 		couleurCourante(200,200,200);
@@ -669,7 +676,8 @@ void affichage(){
 		afficheChaine("Selectionnez un test", 30, LargeurFenetre/3, HauteurFenetre*3/4);
 		afficheChaine("jeu1", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("jeu2", 30, LargeurFenetre*17/40, HauteurFenetre*5/12);
-		afficheChaine("Resultats", 30, LargeurFenetre*14/20, HauteurFenetre*5/12);
+		afficheChaine("Resultats", 30, LargeurFenetre*14/20 + 20, HauteurFenetre*5/12);
+		regles();
 	}
 	if (scene==10){//vitesse analyse en
 		couleurCourante(200,200,200);
@@ -683,6 +691,8 @@ void affichage(){
 		afficheChaine("game1", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("game2", 30, LargeurFenetre*17/40, HauteurFenetre*5/12);
 		afficheChaine("Results", 30, LargeurFenetre*14/20, HauteurFenetre*5/12);
+		regles();
+		afficheChaine("Rules", 30, LargeurFenetre*2/20, HauteurFenetre/25);
 	}
 	//-------------------------------------------------------------------------------------resultats---------------------------------------------------------------------------------------//
 	if (scene==15){//résultats fr
@@ -690,7 +700,7 @@ void affichage(){
 		rectangle(LargeurFenetre*2/20, HauteurFenetre*4/6, LargeurFenetre*18/20, HauteurFenetre*5/6);
 		couleurCourante(0,0,0);
 		epaisseurDeTrait(4);
-		afficheChaine("Resultats", 30, LargeurFenetre/3, HauteurFenetre*3/4);
+		afficheChaine("Resultats", 30, LargeurFenetre*14/20 + 20, HauteurFenetre*5/12);
 	}
 	//----------------------------------------------------------------------------------------règles---------------------------------------------------------------------------------------//
 	
@@ -699,18 +709,20 @@ void affichage(){
 		rectangle(0, 0, LargeurFenetre*3/20, HauteurFenetre*2/20);
 		couleurCourante(0,0,0);
 		epaisseurDeTrait(4);
-		afficheChaine("Regles", 30, LargeurFenetre*2/20, HauteurFenetre/25);
+		regles();
 	}
 	if (scene==6||scene==8||scene==10){
 		couleurCourante(200,200,200);
 		rectangle(0, 0, LargeurFenetre*3/20, HauteurFenetre*2/20);
 		couleurCourante(0,0,0);
 		epaisseurDeTrait(4);
-		afficheChaine("Rules", 30, LargeurFenetre*2/20, HauteurFenetre/25);
+		regles();
 	}
 	if (scene==29){
+		regles();
 	}
 	if (scene==30){
+		regles();
 	}
 	
 	//-------------------------------------------------------------------------------------scènes jeux-------------------------------------------------------------------------------------//
@@ -983,6 +995,10 @@ void affichage(){
 	}
 	if (scene==25){
 		jeu_sept_erreurs();
+	}
+	if (scene==26)
+	{
+		jeu_reflexe();
 	}
 	
 	/*if(scene==13){

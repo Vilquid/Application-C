@@ -454,6 +454,7 @@ void affichage(){
 		afficheChaine("Memoire", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("Synchronisation", 30, LargeurFenetre*17/40-20, HauteurFenetre*5/12);
 		afficheChaine("Vitesse d'analyse", 30, LargeurFenetre*14/20, HauteurFenetre*5/12);
+		regles();
 	}
 	if (scene==4){//choix apptitude en
 		couleurCourante(200,200,200);
@@ -482,6 +483,7 @@ void affichage(){
 		afficheChaine("Memory", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("Simon", 30, LargeurFenetre*17/40, HauteurFenetre*5/12);
 		afficheChaine("Resultats", 30, LargeurFenetre*14/20 + 20, HauteurFenetre*5/12);
+		regles();
 	}
 	if (scene==6){//mémoire en
 		couleurCourante(200,200,200);
@@ -508,6 +510,7 @@ void affichage(){
 		afficheChaine("Alphabet", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("Pointeur", 30, LargeurFenetre*17/40, HauteurFenetre*5/12);
 		afficheChaine("Resultats", 30, LargeurFenetre*14/20 + 20, HauteurFenetre*5/12);
+		regles();
 	}
 	if (scene==8){//synchro en
 		couleurCourante(200,200,200);
@@ -534,6 +537,7 @@ void affichage(){
 		afficheChaine("Mots colorés", 30, LargeurFenetre*3/20, HauteurFenetre*5/12);
 		afficheChaine("7 différences", 30, LargeurFenetre*17/40, HauteurFenetre*5/12);
 		afficheChaine("Resultats", 30, LargeurFenetre*14/20 + 20, HauteurFenetre*5/12);
+		regles();
 	}
 	if (scene==10){//vitesse analyse en
 		couleurCourante(200,200,200);
@@ -563,7 +567,6 @@ void affichage(){
 		rectangle(0, 0, LargeurFenetre*3/20, HauteurFenetre*2/20);
 		couleurCourante(0,0,0);
 		epaisseurDeTrait(4);
-		//afficheChaine("Regles", 30, LargeurFenetre*2/20, HauteurFenetre/25);
 		regles();
 	}
 	if (scene==6||scene==8||scene==10){
@@ -571,11 +574,14 @@ void affichage(){
 		rectangle(0, 0, LargeurFenetre*3/20, HauteurFenetre*2/20);
 		couleurCourante(0,0,0);
 		epaisseurDeTrait(4);
+		regles();
 		afficheChaine("Rules", 30, LargeurFenetre*2/20, HauteurFenetre/25);
 	}
 	if (scene==29){
+		regles();
 	}
 	if (scene==30){
+		regles();
 	}
 	
 	//-------------------------------------------------------------------------------------scènes jeux-------------------------------------------------------------------------------------//
@@ -821,6 +827,10 @@ void affichage(){
 	}
 	if (scene==25){
 		jeu_sept_erreurs();
+	}
+	if (scene==26)
+	{
+		jeu_reflexe();
 	}
 }
 	
@@ -1153,7 +1163,6 @@ void regles()
 		afficheChaine("Principe du jeu : une lettre s'affiche à l'écran et vous devez appuyer sur la lettre qui la précède puis celle qui la suit dans l'alphabet.", 20, 10, HauteurFenetre - 615);
 	}
 }
-
 
 int jeu_reflexe() // jeu où l'on doit cliquer le plus rapidement dans une case
 {
