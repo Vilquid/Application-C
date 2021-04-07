@@ -1,3 +1,13 @@
+# Presentation
+The general objective of the application is to be able to test and rate people on certain very specific skills such as :
+- Memory
+- Mobility
+- Laterality
+- The synchronization
+- The speed of analysis
+This application could, for example, be used in a rehabilitation center to test the different aptitudes of patients. In this particular use case, one can imagine the importance of noting a possible evolution, progression over the weeks on a patient. The scoring system is based on several different criteria such as for example the speed of execution of the test, the percentage of error etc ...
+
+Existing French version.
 # Présentation
 L’objectif général de l’application est de pouvoir tester et noter des personnes sur certaines aptitudes bien précises tel que :
   -  La mémoire
